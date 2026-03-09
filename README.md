@@ -1,12 +1,72 @@
-# React + Vite
+# React Material UI Site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript + Vite site styled with Material UI theme customization.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19
+- Material UI 7
+- Vite 7
+- TypeScript 5
 
-## Expanding the ESLint configuration
+## Local Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the dev server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Windows PowerShell note: if script execution is restricted, use `npm.cmd` instead of `npm`.
+
+## GitHub Pages Deployment
+
+This repo is configured for GitHub Pages deployment through GitHub Actions.
+
+### 1. Push to `main`
+
+```bash
+git add .
+git commit -m "Update site"
+git push origin main
+```
+
+### 2. Enable Pages in GitHub
+
+In the GitHub repository:
+
+1. Go to `Settings`.
+2. Select `Pages`.
+3. Under `Build and deployment`, set `Source` to `GitHub Actions`.
+
+### 3. Wait for deployment
+
+1. Open the `Actions` tab.
+2. Run or wait for `Deploy to GitHub Pages` workflow.
+3. After it succeeds, open the site URL.
+
+## Site URL
+
+Expected Pages URL:
+
+`https://testtestlearn.github.io/react-material-ui/`
+
+## Important Config
+
+- Vite base path is set in `vite.config.ts`:
+
+`base: '/react-material-ui/'`
+
+If you rename the repository, update this base path to match the new repo name.
