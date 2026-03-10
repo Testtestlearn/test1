@@ -58,7 +58,7 @@ function App() {
           variant="h2"
           sx={{ mt: 1, fontSize: { xs: "2rem", md: "3.4rem" } }}
         >
-          Jimmy&apos;s test website
+          Jimmy&apos;s test
         </Typography>
         <Typography
           variant="body1"
