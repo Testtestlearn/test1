@@ -1,21 +1,32 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Container,
-  Grid,
-  Link,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Container } from "@mui/material";
+import type { SelectChangeEvent } from "@mui/material/Select";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import CrudTablePage from "./pages/CrudTablePage";
+import HomePage from "./pages/HomePage";
+import SettingsPage from "./pages/SettingsPage";
+import UserInputPage from "./pages/UserInputPage";
 
 const featureData = [
   {
-    title: "Fast Setup",
+    title: "Registration Form",
     description:
-      "Vite gives you instant startup and smooth updates while developing.",
+      "Fill out a validated user input form with real-time error feedback.",
+    ctaLabel: "Open Form",
+    ctaTo: "/form",
+  },
+  {
+    title: "Open Settings",
+    description:
+      "Go to your dedicated settings page and customize your experience.",
+    ctaLabel: "Open Settings",
+    ctaTo: "/settings",
+  },
+  {
+    title: "CRUD Table",
+    description: "Manage users with a full create, update, and delete table.",
+    ctaLabel: "Open CRUD Table",
+    ctaTo: "/crud",
   },
   {
     title: "Reusable Components",
@@ -30,108 +41,47 @@ const featureData = [
 ];
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [emailAlerts, setEmailAlerts] = useState(true);
+  const [fontSize, setFontSize] = useState(16);
+  const [density, setDensity] = useState(70);
+  const [language, setLanguage] = useState("English");
+  const [timezone, setTimezone] = useState("UTC-05:00");
+
+  const handleLanguageChange = (event: SelectChangeEvent) => {
+    setLanguage(event.target.value);
+  };
+
+  const handleTimezoneChange = (event: SelectChangeEvent) => {
+    setTimezone(event.target.value);
+  };
+
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
-      <Box
-        component="section"
-        sx={{
-          border: "1px solid",
-          borderColor: "secondary.light",
-          borderRadius: 3,
-          p: { xs: 3, md: 5 },
-          background:
-            "linear-gradient(140deg, #fff6d9 0%, #ffd8b5 50%, #ffc9de 100%)",
-          boxShadow: "0 18px 50px rgba(126, 68, 34, 0.22)",
-        }}
-      >
-        <Typography
-          variant="overline"
-          sx={{
-            fontWeight: 800,
-            letterSpacing: "0.14em",
-            color: "primary.main",
-          }}
-        >
-          Welcome
-        </Typography>
-        <Typography
-          variant="h2"
-          sx={{ mt: 1, fontSize: { xs: "2rem", md: "3.4rem" } }}
-        >
-          Jimmy&apos;s test
-        </Typography>
-        <Typography
-          variant="body1"
-          color="text.secondary"
-          sx={{ mt: 2, maxWidth: "58ch" }}
-        >
-          This website is powered by React, Vite, and Material UI.
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", sm: "row" }}
-          spacing={1.5}
-          sx={{ mt: 3 }}
-        >
-          <Button variant="contained" href="#features" size="large">
-            Explore Features
-          </Button>
-          <Button
-            variant="outlined"
-            color="secondary"
-            href="https://react.dev"
-            target="_blank"
-            rel="noreferrer"
-            size="large"
-          >
-            React Docs
-          </Button>
-        </Stack>
-      </Box>
-
-      <Grid container spacing={2} id="features" sx={{ mt: 2 }}>
-        {featureData.map((feature) => (
-          <Grid key={feature.title} size={{ xs: 12, md: 4 }}>
-            <Card sx={{ height: "100%" }}>
-              <CardContent>
-                <Typography variant="h5">{feature.title}</Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mt: 1 }}
-                >
-                  {feature.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-
-        <Grid size={{ xs: 12 }}>
-          <Box sx={{ p: { xs: 2, md: 3 } }}>
-            <Typography variant="h4" mb={2}>
-              Welcome to MUI
-            </Typography>
-
-            <Stack spacing={2} maxWidth={320}>
-              <TextField label="Your name" />
-              <Button variant="contained">Submit</Button>
-            </Stack>
-          </Box>
-        </Grid>
-      </Grid>
-
-      <Typography variant="body2" color="text.secondary" sx={{ mt: 4 }}>
-        Built with Material UI theming. Learn more at{" "}
-        <Link
-          href="https://mui.com/material-ui/customization/theming/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          mui.com/theming
-        </Link>
-        .
-      </Typography>
+      <Routes>
+        <Route path="/" element={<HomePage featureData={featureData} />} />
+        <Route path="/crud" element={<CrudTablePage />} />
+        <Route path="/form" element={<UserInputPage />} />
+        <Route
+          path="/settings"
+          element={
+            <SettingsPage
+              darkMode={darkMode}
+              emailAlerts={emailAlerts}
+              fontSize={fontSize}
+              density={density}
+              language={language}
+              timezone={timezone}
+              onDarkModeChange={setDarkMode}
+              onEmailAlertsChange={setEmailAlerts}
+              onFontSizeChange={setFontSize}
+              onDensityChange={setDensity}
+              onLanguageChange={handleLanguageChange}
+              onTimezoneChange={handleTimezoneChange}
+            />
+          }
+        />
+      </Routes>
     </Container>
   );
 }

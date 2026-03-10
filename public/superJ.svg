@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+
+    <defs>
+        <!-- Expanded red + purple bands -->
+        <linearGradient id="gmailSegments" x1="0%" y1="0%" x2="0%" y2="100%">
+            <!-- Red (top 40%) -->
+            <stop offset="0%" stop-color="#EA4335" />
+            <stop offset="35%" stop-color="#EA4335" />
+
+            <!-- Orange -->
+            <stop offset="40%" stop-color="#FB7C00" />
+            <stop offset="45%" stop-color="#FB7C00" />
+
+            <!-- Yellow -->
+            <stop offset="55%" stop-color="#FBBC04" />
+            <stop offset="57%" stop-color="#FBBC04" />
+
+            <!-- Green -->
+            <stop offset="67%" stop-color="#34A853" />
+            <stop offset="58%" stop-color="#34A853" />
+
+            <!-- Blue -->
+            <stop offset="78%" stop-color="#4285F4" />
+            <stop offset="88%" stop-color="#4285F4" />
+
+            <!-- Purple (bottom 12%) → now expanded to 12% -->
+            <stop offset="78%" stop-color="#A142F4" />
+            <stop offset="100%" stop-color="#A142F4" />
+        </linearGradient>
+    </defs>
+
+    <!-- Bold Gmail-style rainbow J -->
+    <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="28" font-weight="1000" fill="url(#gmailSegments)"
+        text-anchor="middle" dominant-baseline="central">
+        J
+    </text>
+
+</svg>
